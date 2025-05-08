@@ -1,28 +1,31 @@
-import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
-import './globals.css'
+import Link from 'next/link';
 
-const poppins = Poppins({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-export const metadata: Metadata = {
-  title: 'BeautyIn Nails - Home Service Nail Art',
-  description: 'Layanan nail art profesional yang datang ke rumah Anda'
-}
-
-export default function RootLayout({
+export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={poppins.className}>
-      <body>
-        {children}
-      </body>
-    </html>
-  )
+    <div>
+      <nav className="bg-white shadow-lg">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex space-x-8">
+            <Link
+              href="/admin/design"
+              className="inline-flex items-center px-1 pt-1 text-gray-700 hover:text-purple-600"
+            >
+              Manajemen Design
+            </Link>
+            <Link
+              href="/admin/dashboard"
+              className="inline-flex items-center px-1 pt-1 text-gray-700 hover:text-purple-600"
+            >
+              Dashboard
+            </Link>
+          </div>
+        </div>
+      </nav>
+      {children}
+    </div>
+  );
 }
